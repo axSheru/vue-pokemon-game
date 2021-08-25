@@ -17,6 +17,14 @@ export default {
             type: Array,
             required: true,
         }
+    },
+    computed: {
+        pokemonsCap() {
+            this.pokemons.forEach(pokemon => {
+                pokemon.name = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)
+            });
+            console.log(this.pokemons)
+        }
     }
 }
 </script>
