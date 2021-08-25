@@ -9,6 +9,11 @@
     <PokemonOptions
       :pokemons="pokemonArr"
       @selection="checkAnswer" />
+
+    <template v-if="showAnswer" class="fade-in">
+      <h2 v-if="showAnswer">{{message}}</h2>
+      <button @click="newGame">Nuevo juego</button>
+    </template>
   </div>
 </template>
 
@@ -29,6 +34,8 @@ export default {
         pokemonArr: [],
         pokemon: null,
         showPokemon: false,
+        showAnswer: false,
+        message: ''
       }
     },
     methods: {
@@ -41,6 +48,17 @@ export default {
       },
       checkAnswer( pokemonId ) {
         this.showPokemon = pokemonId == this.pokemon.id ? true : false
+
+        this.message = this.showPokemon ? `Respuesta correcta, ¡ es ${this.pokemon.name}!` : 'Sigue intentando.'
+
+        this.showAnswer = true
+      },
+      newGame() {
+        this.showPokemon = false
+        this.showAnswer = false
+        this.pokemonArr = []
+        this.pokemon = null
+        this.mixPokemonArr()
       }
     },
     mounted() {
