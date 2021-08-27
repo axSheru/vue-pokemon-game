@@ -13,6 +13,13 @@ describe('getPokemonOptions helpers', () => {
         expect( typeof pokemons[649] ).toBe( "number" )
         
     })
-    
 
+    test('Debe de retornar un arreglo de 4 elementos con nombres de Pokémon.', () => {
+        
+    })
+
+    test('getPokemonOptions debe de retornar un arreglo mezclado.', () => {
+        
+    })
+    
 })
