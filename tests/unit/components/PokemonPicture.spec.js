@@ -4,6 +4,15 @@ import PokemonPicture from '@/components/PokemonPicture';
 describe('PokemonPicture component', () => {
 
     test('Debe de hacer match con el snapshot.', () => {
+
+        const wrapper = shallowMount( PokemonPicture, {
+            props: {
+                pokemonId: 1,
+                showPokemon: false
+            }
+        })
+
+        expect( wrapper.html() ).toMatchSnapshot()
         
     })
 
