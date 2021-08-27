@@ -17,10 +17,38 @@ describe('PokemonPicture component', () => {
     })
 
     test('Debe de mostrar la imagen oculta y el pokemon 100', () => {
+
+        const wrapper = shallowMount( PokemonPicture, {
+            props: {
+                pokemonId: 100,
+                showPokemon: false
+            }
+        })
+
+        const [ img1, img2 ] = wrapper.findAll( 'img' )
+
+        expect( img1.exists() ).toBeTruthy()
+        expect( img2 ).toBe( undefined )
+        expect( img1.classes('hidden-pokemon') ).toBeTruthy()
+        expect(img1.attributes('src')).toBe('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/100.svg')
+        expect(img1.attributes().src).toBe('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/100.svg')//Alternativa.
         
     })
 
     test('Debe de mostrar el Pokémon si showPokemon:true', () => {
+
+        const wrapper = shallowMount( PokemonPicture, {
+            props: {
+                pokemonId: 100,
+                showPokemon: true
+            }
+        })
+
+        const img1 = wrapper.find( 'img' )
+
+        expect( img1.exists() ).toBeTruthy()
+        expect( img1.classes('hidden-pokemon') ).toBeFalsy()
+        expect( img1.classes('fade-in') ).toBeTruthy()
         
     })
     
