@@ -49,7 +49,7 @@ export default {
       checkAnswer( pokemonId ) {
         this.showPokemon = pokemonId == this.pokemon.id ? true : false
 
-        this.message = this.showPokemon ? `Respuesta correcta, ¡ es ${this.pokemon.name}!` : 'Sigue intentando.'
+        this.message = this.showPokemon ? `Respuesta correcta, ¡es ${this.pokemon.name}!` : 'Sigue intentando.'
 
         this.showAnswer = true
       },
