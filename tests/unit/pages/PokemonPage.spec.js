@@ -45,6 +45,8 @@ describe('PokemonPage Component', () => {
 
     test('Debe de mostrar los componentes de PokemonPicture y PokemonOptions.', () => {
 
+        //Solución propia.
+
         const wrapper = mount( PokemonPage, {
             data() {
                 return {
@@ -65,6 +67,29 @@ describe('PokemonPage Component', () => {
 
         expect( componentPicture.props( 'pokemonId' ) ).toBe( 1 )
         expect( componentOptions.props( 'pokemons' ) ).toBeTruthy()
+
+        //Solución profe.
+
+        const wrapper2 = shallowMount( PokemonPage, {
+            data() {
+                return {
+                    pokemonArr: mockPokemons,
+                    pokemon: mockPokemons[0],
+                    showPokemon: false,
+                    showAnswer: false,
+                    message: ''
+                }
+            }
+        })
+
+        const picture = wrapper2.find( 'pokemon-picture-stub' )
+        const options = wrapper2.find( 'pokemon-options-stub' )
+
+        expect( picture.exists() ).toBeTruthy()
+        expect( options.exists() ).toBeTruthy()
+
+        expect( picture.attributes( 'pokemonid' ) ).toBe( '1' )
+        expect( options.attributes( 'pokemons' ) ).toBeTruthy()
         
     })
     
